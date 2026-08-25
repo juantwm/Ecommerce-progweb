@@ -1,0 +1,18 @@
+.seccion-registro {
+  position: relative;
+}
+.seccion-registro .franja-marca {
+  background-color: #1abc9c;
+  height: 50%;
+  width: 100%;
+}
+.seccion-registro .tarjeta-login {
+  border-radius: 1.2rem;
+}
+.seccion-registro .tarjeta-login .btn-personalizado {
+  background-color: #212529;
+  color: white;
+}
+.seccion-registro .tarjeta-login .btn-personalizado:hover {
+  background-color: black;
+}/*# sourceMappingURL=style.css.map */

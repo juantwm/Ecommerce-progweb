@@ -1,0 +1,27 @@
+@import 'variables';
+
+
+.seccion-registro {
+    position: relative;
+    
+    .franja-marca {
+        background-color: $color-turquesa; 
+        height: 50%;
+        width: 100%;
+    }
+
+    .tarjeta-login {
+        border-radius: $radio-tarjeta;
+        
+        .btn-personalizado {
+            background-color: $color-oscuro;
+            color: white;
+            
+           
+            &:hover {
+                
+                background-color: darken($color-oscuro, 15%); 
+            }
+        }
+    }
+}
