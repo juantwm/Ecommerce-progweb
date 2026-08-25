@@ -38,15 +38,6 @@ app.get("/checkout", (req,res) =>
     res.render("pages/checkout");
 });
 
-
-
-
-
-
-
-
-
-
 app.listen(port, ()=>
 {
     console.log("Server is ready!");
