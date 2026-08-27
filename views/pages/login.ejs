@@ -1,6 +1,33 @@
 <%- include('../partials/header', {}) %>
 
+<main class="bg-light position-relative d-flex align-items-center justify-content-center flex-grow-1 px-3">
+    <div class="position-absolute top-0 start-0 w-100" style="height: 40%; background-color:#1abc9c;"></div>
 
+    <div class="card border-0 z-1 p-4 shadow-lg mb-5" style="width: 100%; max-width: 400px; border-radius: 1.2em;">
+        <div class="card-body text-center">
+            <h2 class="m-4">¡Hola!</h2>
+
+            <form>
+                <div class="mb-4">
+                    
+                    <input type="text" class="form-control rounded-pill" id="name1" aria-describedby="nameHelp" placeholder="Tu nombre de usuario">
+                    
+                </div>
+                <div class="mb-4">
+                    
+                    <input type="password" class="form-control rounded-pill" id="password1" placeholder="Tu contraseña">
+                </div>
+                <button type="submit" class="btn btn-dark w-100 rounded-pill mb-3">Iniciar Sesion</button>
+
+                    <p class="text-muted small">
+                        ¿No tienes cuenta?<a href="/register" class="text-decoration-undeline text-dark"> Registrate</a>
+                    </p>
+
+            </form>
+            
+        </div>
+    </div>
+</main>
 
 
 
