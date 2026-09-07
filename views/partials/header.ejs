@@ -12,12 +12,39 @@
 </head>
 <body class="d-flex flex-column min-vh-100 overflow-x-hidden"> 
     
-    <header class="bg-white py-3 px-4 shadow-sm">
-        <div class="container-fluid">
+    <header class="bg-white py-3 px-4 shadow-sm border-bottom">
+        <div class="container-fluid d-flex align-items-center gap-2 gap-md-4 justify-content-between">
+        
+        
+        <a href="/" class="text-decoration-none fs-4 flex-shrink-0" style="color: #1abc9c;">
+            <strong>Mi</strong><span class="d-none d-md-inline">Ecommerce</span><span class="d-inline d-md-none">E</span>
+        </a>
+
+        <% if(locals.mostrarBuscador) { %> 
             
-            <a href="/" class="text-decoration-none fs-4" style="color: #1abc9c;">
-                <strong>Mi</strong>Ecommerce
-            </a>
-        </div>
+            
+            <form class="input-group border border-secondary-subtle rounded-pill bg-white overflow-hidden flex-grow-1" role="search" style="max-width: 600px;">
+                <input class="form-control border-0 shadow-none px-3 px-md-4 bg-transparent" type="search" placeholder="Buscar productos..." aria-label="Search"/>
+                <button class="btn border-0 text-secondary px-2 px-md-3" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+
+            
+            <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                
+                
+                <button class="btn btn-dark rounded-circle position-relative d-flex align-items-center justify-content-center p-0" style="width: 38px; height: 38px;">
+                    <i class="bi bi-cart"></i>
+                </button>
+                
+                
+                <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center p-0" style="width: 38px; height: 38px;">
+                    <i class="bi bi-person-fill"></i>
+                </button>
+
+            </div>
+        <% } %>
+    </div>
     </header>
     
