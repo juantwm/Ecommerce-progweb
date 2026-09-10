@@ -1,6 +1,7 @@
 import express from 'express';
 
 
+
 const app = express();
 
 const port = 3000;
@@ -17,10 +18,21 @@ const categorias =[
 ];
 
 const listadoProductos = [
-        { nombre: 'Whiskey Jack Daniels 750ml', precio: '19.900' },
-        { nombre: 'Coca Cola Lata 220mL Pack x8', precio: '7.600' },
-        { nombre: 'Monitor 24 Pulgadas', precio: '185.000' },
-        { nombre: 'Silla Gamer', precio: '210.000' }
+        { 
+            id: 1, 
+            nombre: 'Whiskey Jack Daniels Honey 750ml', 
+            precio: '19.900', 
+            categoria: 'Bebidas', 
+            descripcion: 'Un verdaderamente fabuloso licor de whisky...',
+            imagenes: [
+                '/img/img1-jack.jpg',
+                '/img/img2-jack.jpg',
+                '/img/img3-jack.jpg'
+            ] 
+        },
+        { nombre: 'Coca Cola Lata 220mL Pack x8', precio: '7.600', categorias:'Bebidas', id:2 },
+        { nombre: 'Monitor 24 Pulgadas', precio: '185.000', categorias:'Electronica', id:3 },
+        { nombre: 'Silla Gamer', precio: '210.000', categorias:'Hogar', id:4 }
 ];
 
 
@@ -34,9 +46,21 @@ app.get("/", (req, res) =>
 
 });
 
-app.get("/products", (req, res)=>
+app.get("/products:id", (req, res)=>
 {
-    res.render("pages/product");
+    const idBuscado = parseInt(req.params.id);
+    const productoEncontrado = listadoProductos.find(p => p.id === idBuscado);
+
+    if(!productoEncontrado)
+    {
+        return res.render("pages/product", {error:true, sugerencias:listadoProductos.slice(0,4)})
+    }
+
+    const productosRelacionados = listadoProductos.filter(p => p.categorias === productoEncontrado.categorias && p.id !== productoEncontrado.id);
+
+    res.render("pages/product",{error:false, producto:productoEncontrado, productosRelacionados: productosRelacionados.slice(0,4)});
+
+
 });
 
 app.get("/cart", (req, res) =>
