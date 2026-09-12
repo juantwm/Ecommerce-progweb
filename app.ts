@@ -5,6 +5,8 @@ import express from 'express';
 const app = express();
 
 const port = 3000;
+app.use(express.static('public'));
+app.use('/img', express.static('img'));
 
 const categorias =[
     {id:1, nombre:'Electronica', icono: 'bi-laptop'},
@@ -42,23 +44,37 @@ app.set("view engine", "ejs");
 app.get("/", (req, res) =>
 {
     res.render("pages/index", 
-        {mostrarBuscador: true, categorias: categorias, products: listadoProductos});
+        {mostrarBuscador: true, categorias: categorias, products: listadoProductos, productosRelacionados: listadoProductos});
 
 });
 
-app.get("/products:id", (req, res)=>
+app.get("/product/:id", (req, res)=>
 {
     const idBuscado = parseInt(req.params.id);
     const productoEncontrado = listadoProductos.find(p => p.id === idBuscado);
 
     if(!productoEncontrado)
     {
-        return res.render("pages/product", {error:true, sugerencias:listadoProductos.slice(0,4)})
+        return res.render("pages/product", {
+            error:true, 
+            productosRelacionados: listadoProductos.slice(0, 4),
+            categorias: categorias, 
+            producto: null,
+            mostrarBuscador:true
+        })
     }
+    let relacionados = listadoProductos.filter(p => p.categoria === productoEncontrado.categoria && p.id !== productoEncontrado.id);
 
-    const productosRelacionados = listadoProductos.filter(p => p.categorias === productoEncontrado.categorias && p.id !== productoEncontrado.id);
-
-    res.render("pages/product",{error:false, producto:productoEncontrado, productosRelacionados: productosRelacionados.slice(0,4)});
+    if (relacionados.length === 0) {
+        relacionados = listadoProductos.filter(p => p.id !== productoEncontrado.id);
+    }
+    res.render("pages/product",{
+        error:false, 
+        producto:productoEncontrado, 
+        productosRelacionados: relacionados.slice(0,4), 
+        categorias: categorias, 
+        mostrarBuscador:true
+    });
 
 
 });
