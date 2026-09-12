@@ -1,3 +1,40 @@
-<h1>
-    🛒 Página del carrito
-</h1>
+<%- include('../partials/header', {}) %>
+
+<main class="bg-light flex-grow-1 py-4">
+
+    <div class="container mb-5">
+
+        <% if (locals.error && products.listadoProductos.length>0) { %>  
+
+            <div class="d-flex flex-column align-items-between justify-content-center">
+                <button></button>
+                <h1 class="fs-3 fw-bold mb-2">Productos en tu carrito</h1>
+
+                <% products.forEach(function(producto) { %>
+                    <div class="card p-4 shadow-sm border-0 rounded-4">
+                        <img src="" alt="">
+                        <p></p>
+                        <button></button>
+                        <button></button>
+                        <p class="fs-1 fw-bold mb-3">
+                            <%= producto.precio %> 
+                            <span class="fs-6 text-muted fw-normal">ARS</span>
+                        </p>
+                    </div>
+                <% }); %>
+
+                <h2 class="fs-3 fw-bold mb-2">Total de puntos</h2>
+                <button>Ir a pagar</button>
+
+            </div>
+        <% } %>
+
+    </div>
+
+
+    
+
+</main>
+
+
+<%- include('../partials/footer', {}) %>  

@@ -81,7 +81,7 @@ app.get("/product/:id", (req, res)=>
 
 app.get("/cart", (req, res) =>
 {
-    res.render("pages/cart");
+    res.render("pages/cart",{mostrarBuscador:true, products:listadoProductos});
 
 });
 
