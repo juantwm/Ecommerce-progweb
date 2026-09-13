@@ -34,14 +34,41 @@
             <div class="d-flex align-items-center gap-2 flex-shrink-0">
                 
                 
-                <button class="btn btn-dark rounded-circle position-relative d-flex align-items-center justify-content-center p-0" style="width: 38px; height: 38px;">
-                    <i class="bi bi-cart"></i>
-                </button>
+                <a href="/cart" class="btn btn-dark rounded-circle position-relative d-flex align-items-center justify-content-center p-0" style="width: 38px; height: 38px;">
+                    <i class="bi bi-cart text-white"></i>
+                </a>
                 
                 
-                <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center p-0" style="width: 38px; height: 38px;">
-                    <i class="bi bi-person-fill"></i>
-                </button>
+                <div class="dropdown">
+    
+                    
+                    <button class="btn btn-dark rounded-pill px-3 d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        
+                        <i class="bi bi-person-circle fs-5"></i>
+                        
+                    </button>
+
+                    
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2" style="width: 250px;">
+                        
+                        
+                        <li><a class="dropdown-item py-2 fw-bold text-primary" href="/login">Iniciar Sesión</a></li>
+                        <li><a class="dropdown-item py-2 fw-bold" href="/register">Registrarse</a></li>
+                        
+                        <li><hr class="dropdown-divider"></li>
+
+                        
+                        <li><a class="dropdown-item py-2" href="/">Inicio</a></li>
+                        <li><a class="dropdown-item py-2" href="#">Mis Compras</a></li>
+                        <li><a class="dropdown-item py-2" href="#">Favoritos</a></li>
+                        <li><a class="dropdown-item py-2" href="#">Historial</a></li>
+                        
+                        <li><hr class="dropdown-divider"></li>
+
+                        <li><a class="dropdown-item py-2" href="#">Cambiar a Tema Oscuro</a></li>
+                    </ul>
+                    
+                </div>
 
             </div>
         <% } %>

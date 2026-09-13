@@ -3,31 +3,89 @@
 <main class="bg-light flex-grow-1 py-4">
 
     <div class="container mb-5">
+        <div class="mb-4">
+            <a href="/" class="text-dark text-decoration-none d-inline-flex align-items-center mb-2"><i class="bi-arrow-left me-2 fs-5"></i></a>
+            <h1 class="fs-3 fw-normal">Productos en tu Carrito</h1>
+        </div>
 
-        <% if (locals.error && products.listadoProductos.length>0) { %>  
+        
 
-            <div class="d-flex flex-column align-items-between justify-content-center">
-                <button></button>
-                <h1 class="fs-3 fw-bold mb-2">Productos en tu carrito</h1>
+        <% if (locals.carrito && carrito.length > 0) { %>
 
-                <% products.forEach(function(producto) { %>
-                    <div class="card p-4 shadow-sm border-0 rounded-4">
-                        <img src="" alt="">
-                        <p></p>
-                        <button></button>
-                        <button></button>
-                        <p class="fs-1 fw-bold mb-3">
-                            <%= producto.precio %> 
-                            <span class="fs-6 text-muted fw-normal">ARS</span>
-                        </p>
+            <div class="d-flex flex-column gap-3">
+                
+                
+
+                <% carrito.forEach(function(producto) { %>
+
+                    <!--Contenedor principal-->
+                    <div class="bg-white rounded-4 shadow-sm p-3 mb-3">
+                        <div class="row align-items-center g-3">
+                            
+                            <!-- Foto y Nombre -->
+                            <div class="col-12 col-md-6 d-flex align-items-center gap-3">
+                                <img src="<%= producto.imagen %>" alt="<%= producto.nombre %>" class="object-fit-contain rounded" style="width: 60px; height: 60px;">
+                                
+                                
+                                <span class="fs-6 lh-sm"><%= producto.nombre %></span>
+                            </div>
+
+                            <!-- Controles y Precio-->
+                            
+                            <div class="col-12 col-md-6 d-flex align-items-center justify-content-between justify-content-md-end gap-2 gap-md-4">
+                                
+                                <button class="btn btn-secondary rounded-pill btn-sm px-3 px-md-4">Quitar</button>
+                                
+                                <div class="border border-secondary-subtle rounded-pill px-3 py-1 d-flex align-items-center justify-content-between" style="width: 100px;">
+                                    <button class="btn btn-sm p-0 border-0 text-dark fw-bold">-</button>
+                                    <span><%= producto.cantidad %></span>
+                                    <button class="btn btn-sm p-0 border-0 text-dark fw-bold">+</button>
+                                </div>
+
+                                
+                                <span class="fs-4 fw-bold text-end" style="min-width: 90px;">
+                                    <%= producto.precio %>
+                                </span>
+                                
+                            </div>
+
+                        </div>
                     </div>
                 <% }); %>
 
-                <h2 class="fs-3 fw-bold mb-2">Total de puntos</h2>
-                <button>Ir a pagar</button>
+                    <div class="d-flex justify-content-between align-items-end mt-5 ">
+
+                        <!--BONUS -descuento-->
+                        <form class="input-group shadow-sm w-auto">
+                            <input type="text" class="form-control border-0 rounded-start-pill px-4" placeholder="Codigo de descuento" style="max-width: 250px;">
+                            <button class="btn btn-white border-0 bg-white text-primary rounded-end-pill fw-bold px-4" type="button">Aplicar</button>
+                        </form>
+
+                        <div class="d-flex flex-column align-items-end gap-3">
+
+                            <div class="d-flex align-items-baseline gap-4">
+
+                                <span class="fs-4">Total de Puntos</span>
+                                <span class="fs-2 fw-bold">26.420</span>
+
+                            </div>
+
+                            <a href="/checkout" class="btn btn-dark rounded-pill px-5 py-2">Ir a pagar</a>
+
+                        </div>
+
+                    </div>
+
 
             </div>
+        <% } else { %>
+            <div class="text-center py-5 bg-white rounded-4 shadow-sm mt-4">
+                <h2 class="fs-4 text-muted mb-3">Tu carrito esta vacio</h2>
+                <a href="/" class="btn btn-dark rounded-pill px-4">Ir a comprar</a>
+            </div>
+
         <% } %>
+
 
     </div>
 
