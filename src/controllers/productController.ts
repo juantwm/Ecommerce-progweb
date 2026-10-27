@@ -23,7 +23,7 @@ export const mostrarDetalleProducto = (req:Request, res:Response) =>
         return res.render("pages/product", {
             error:true, 
             mostrarBuscador: true,
-            productos: listaCompleta.slice(0,4),
+            productosRelacionados: listaCompleta.slice(0,4),
             categorias:baseDeDatosCategorias
         });
 
