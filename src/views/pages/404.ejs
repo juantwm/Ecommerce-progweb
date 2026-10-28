@@ -1,0 +1,25 @@
+<%- include('../partials/header', {}) %>
+
+<main class="d-flex flex-column align-items-center justify-content-center text-center px-3" style="min-height: 60vh;">
+    
+    <!-- El número gigante del error -->
+    <h1 class="display-1 fw-bold text-dark mb-0">404</h1>
+    
+    <!-- Mensaje dinámico -->
+    <h2 class="h3 text-secondary mt-3">
+        <%= locals.mensaje ? locals.mensaje : 'Página no encontrada' %>
+    </h2>
+    
+    <p class="text-muted mt-3" style="max-width: 500px;">
+        Parece que te perdiste navegando. La ruta a la que intentaste acceder no existe en nuestro servidor.
+    </p>
+    
+
+    <a href="/" class="btn btn-primary btn-lg mt-4 fw-bold shadow-sm">
+        Volver a la tienda
+    </a>
+
+</main>
+
+
+<%- include('../partials/footer', {}) %>         

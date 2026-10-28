@@ -35,6 +35,11 @@ app.get("/", (req, res) =>
 
 
 
+app.use((req, res) =>
+{
+    res.status(404).render("pages/404", {mensaje: "Página no encontrada"});
+});   
+
 app.listen(port, ()=>
 {
     console.log("Server is ready!");
